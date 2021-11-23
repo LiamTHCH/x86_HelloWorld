@@ -12,5 +12,5 @@ Puis on utilise le "Dynamic linker" pour rendre le programme executable:
 ```
 Puis on peut executer le programme:
 ```
-./bonjour
+./Bonjour
 ```
