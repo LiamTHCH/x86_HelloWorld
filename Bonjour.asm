@@ -1,18 +1,18 @@
-global _start
+global _start                                   ; Mettre _start en programme de demarage
 
-section .text
+section .text                                   ; Jsute un section avec un nom
 
-_start:
-    MOV rax, 0x01
-    MOV rdi, 0x01
-    MOV rsi, msg
-    MOV rdx, msglenght
-    SYSCALL
+_start:                                         ; fonction start 
+    MOV rax, 0x01                               ; Mettre les registre a bonne endroit pour faire un write(0x01)
+    MOV rdi, 0x01                               
+    MOV rsi, msg                                ; registre avec le message
+    MOV rdx, msglenght                          ; registre avec la longeur du message
+    SYSCALL                                     ; dire au pc que tout est pres
 
-    MOV rax, 0x3C
-    MOV rdi, 0x0
-    SYSCALL
+    MOV rax, 0x3C                               ; mettre le registre pour un exit
+    MOV rdi, 0x0                                ; registre pour le code d'erreur (ici 0)
+    SYSCALL                                     ; dire au pc que tout est pres
 
-section .data
-    msg: DB "Salut tout le monde", 0xA
-    msglenght: EQU $ - msg    
+section .data                                   ; section avec les donnes 
+    msg: DB "Salut tout le monde", 0xA          ; Message + 0xA pour un retour de ligne
+    msglenght: EQU $ - msg                      ; calcule pour la longeur du message
